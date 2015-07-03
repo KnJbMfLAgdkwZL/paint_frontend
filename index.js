@@ -157,15 +157,18 @@ function CanvasFloodFiller()//Заливка канваса
 }
 function Paint()
 {
-	this.ContexMyCanvas = null;
-	this.CurItem = 'pen';
-	this.CurColor = '#000000';
-	this.CurSize = 4;
-	this.Prev_X = -1, Prev_Y = -1;
-	this.MousDown = false;
+	this.ContexMyCanvas = null;	//Контекст канваса
+	this.CurItem = 'pen';	//Инструмент
+	this.CurColor = '#000000';	//Цвет
+	this.CurSize = 4;	//Размер
+	this.Prev_X = -1, Prev_Y = -1;	//Предидушие координаты
+	this.MousDown = false;	//Зажата ли кнопка мыши
+	this.PushArray = new Array();	//Масив операций
+	this.Step = -1;	//Шаг операции
 	this.SetContexMyCanvas = function (canvasContext)
 	{
 		this.ContexMyCanvas = canvasContext;
+		this.PushToHistory();
 	}
 	this.SetItem = function (item)
 	{
@@ -199,6 +202,7 @@ function Paint()
 		{
 			this.Prev_X = -1;
 			this.Prev_Y = -1;
+			this.PushToHistory();
 		}
 	}
 	this.MousMove = function (x, y)
@@ -227,7 +231,18 @@ function Paint()
 		{
 			this.prev_X = -1;
 			this.prev_Y = -1;
+			this.ShowArea(x, y);
 		}
+	}
+	this.ShowArea = function (x, y)
+	{
+		var data = this.PushArray[this.Step];
+		this.ContexMyCanvas.putImageData(data, 0, 0);
+		this.ContexMyCanvas.beginPath();
+		this.ContexMyCanvas.arc(x, y, this.CurSize / 2, 0, 2 * Math.PI);
+		this.ContexMyCanvas.lineWidth = 1;
+		this.ContexMyCanvas.strokeStyle = this.CurColor;
+		this.ContexMyCanvas.stroke();
 	}
 	this.MouseClick = function (x, y)
 	{
@@ -242,6 +257,8 @@ function Paint()
 				this.ContexMyCanvas.stroke();
 				break;
 			case 'bucket':
+				var data = this.PushArray[this.Step];
+				this.ContexMyCanvas.putImageData(data, 0, 0);
 				var cff = new CanvasFloodFiller();
 				var hex = this.CurColor;
 				var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
@@ -260,6 +277,49 @@ function Paint()
 		var width = this.ContexMyCanvas.canvas.width;
 		var height = this.ContexMyCanvas.canvas.height;
 		this.ContexMyCanvas.clearRect(0, 0, width, height);
+		this.PushToHistory();
+	}
+	this.PushToHistory = function ()
+	{
+		if (this.Step < 10)
+		{
+			this.Step++;
+		}
+		else
+		{
+			var arr = new Array();
+			for (var i = 0; i < 10; i++)
+			{
+				arr[i] = this.PushArray[i + 1];
+			}
+			this.PushArray = arr;
+		}
+		if (this.Step <= this.PushArray.length)
+		{
+			this.PushArray.length = this.Step;
+		}
+		var width = this.ContexMyCanvas.canvas.width;
+		var height = this.ContexMyCanvas.canvas.height;
+		var data = this.ContexMyCanvas.getImageData(0, 0, width, height);
+		this.PushArray.push(data);
+	}
+	this.Undo = function ()
+	{
+		if (this.Step > 0)
+		{
+			this.Step--;
+			var data = this.PushArray[this.Step];
+			this.ContexMyCanvas.putImageData(data, 0, 0);
+		}
+	}
+	this.Redo = function ()
+	{
+		if (this.Step < this.PushArray.length - 1)
+		{
+			this.Step++;
+			var data = this.PushArray[this.Step];
+			this.ContexMyCanvas.putImageData(data, 0, 0);
+		}
 	}
 }
 $(document).ready(function ()
@@ -318,21 +378,45 @@ $(document).ready(function ()
 		{
 			paint.ClearAll();
 		});
-		$('html').mousedown(function (e)
+		$('#Undo').click(function ()
+		{
+			paint.Undo();
+		});
+		$('#Redo').click(function ()
+		{
+			paint.Redo();
+		});
+		$('#MyCanvas').mousedown(function (e)
 		{
 			var color = $('#color').val();
 			var size = $('#size').val();
 			paint.SetCurSize(size);
 			paint.SetColor(color);
-			paint.MousState(e.pageX, e.pageY, true);
+			/*
+			 var x = $(this).css('width');
+			 x = $(this).attr('width') / parseInt(x) * e.pageX;
+			 var y = $(this).css('height')
+			 y = $(this).attr('height') / parseInt(y) * e.pageY;
+			 */
+			var x = e.pageX;
+			var y = e.pageY;
+			paint.MousState(x, y, true);
 		});
-		$('html').mouseup(function (e)
+		$('#MyCanvas').mouseup(function (e)
 		{
-			paint.MousState(e.pageX, e.pageY, false);
+			var x = e.pageX;
+			var y = e.pageY;
+			paint.MousState(x, y, false);
 		});
-		$('html').mousemove(function (e)
+		$('#MyCanvas').mousemove(function (e)
 		{
-			paint.MousMove(e.pageX, e.pageY);
+			var color = $('#color').val();
+			var size = $('#size').val();
+			paint.SetCurSize(size);
+			paint.SetColor(color);
+			var x = e.pageX;
+			var y = e.pageY;
+			paint.MousMove(x, y);
 		});
 	}
 	catch (error)

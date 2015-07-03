@@ -25,21 +25,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.46441072" vertical-offset="78" max-vertical-offset="1258">
-              <caret line="28" column="38" selection-start-line="28" selection-start-column="38" selection-end-line="28" selection-end-column="38" />
+            <state vertical-scroll-proportion="-8.769231" vertical-offset="418" max-vertical-offset="1292">
+              <caret line="38" column="34" selection-start-line="38" selection-start-column="28" selection-end-line="38" selection-end-column="34" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1820" max-vertical-offset="2703">
-              <caret line="317" column="9" selection-start-line="317" selection-start-column="9" selection-end-line="317" selection-end-column="9" />
+            <state vertical-scroll-proportion="0.6342016" vertical-offset="800" max-vertical-offset="3927">
+              <caret line="242" column="41" selection-start-line="242" selection-start-column="41" selection-end-line="242" selection-end-column="41" />
               <folding>
                 <element signature="n#!!block;n#CanvasFloodFiller#0" expanded="false" />
                 <element signature="e#629#854#0" expanded="false" />
@@ -47,7 +47,10 @@
                 <element signature="e#1587#1940#0" expanded="false" />
                 <element signature="e#2013#4183#0" expanded="false" />
                 <element signature="e#4269#4851#0" expanded="false" />
-                <element signature="e#7365#8259#0" expanded="false" />
+                <element signature="e#5420#5488#0" expanded="false" />
+                <element signature="e#5525#5552#0" expanded="false" />
+                <element signature="e#7854#8034#0" expanded="false" />
+                <element signature="e#8948#9842#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -69,6 +72,7 @@
         <option value="$PROJECT_DIR$/index_1.js" />
         <option value="$PROJECT_DIR$/index_1.html" />
         <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/index.js" />
       </list>
     </option>
   </component>
@@ -121,7 +125,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -140,8 +143,23 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ztest" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -170,15 +188,15 @@
       <BehatRunner />
       <method />
     </configuration>
-    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
-      <method />
-    </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
       <node-options />
       <gulpfile />
       <tasks />
       <pass-parent-env-vars>false</pass-parent-env-vars>
       <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
       <method />
     </configuration>
     <list size="0" />
@@ -197,7 +215,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-4" y="-4" width="1288" height="1004" extended-state="6" />
+    <frame x="-4" y="-4" width="1288" height="1004" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -239,7 +257,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="8" />
+      <option name="time" value="13" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -262,6 +280,205 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="418" max-vertical-offset="1292">
+          <caret line="38" column="34" selection-start-line="38" selection-start-column="28" selection-end-line="38" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2839">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!block;n#CanvasFloodFiller#0" expanded="false" />
+            <element signature="e#629#854#0" expanded="false" />
+            <element signature="e#949#1490#0" expanded="false" />
+            <element signature="e#1587#1940#0" expanded="false" />
+            <element signature="e#2013#4183#0" expanded="false" />
+            <element signature="e#4269#4851#0" expanded="false" />
+            <element signature="e#5420#5488#0" expanded="false" />
+            <element signature="e#5525#5552#0" expanded="false" />
+            <element signature="e#7854#8034#0" expanded="false" />
+            <element signature="e#8948#9842#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ztest/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="476" max-vertical-offset="646">
+          <caret line="28" column="63" selection-start-line="28" selection-start-column="59" selection-end-line="28" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ztest/canvasdraw.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="664" max-vertical-offset="1547">
+          <caret line="78" column="8" selection-start-line="78" selection-start-column="8" selection-end-line="78" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="418" max-vertical-offset="1292">
+          <caret line="38" column="34" selection-start-line="38" selection-start-column="28" selection-end-line="38" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2839">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!block;n#CanvasFloodFiller#0" expanded="false" />
+            <element signature="e#629#854#0" expanded="false" />
+            <element signature="e#949#1490#0" expanded="false" />
+            <element signature="e#1587#1940#0" expanded="false" />
+            <element signature="e#2013#4183#0" expanded="false" />
+            <element signature="e#4269#4851#0" expanded="false" />
+            <element signature="e#5420#5488#0" expanded="false" />
+            <element signature="e#5525#5552#0" expanded="false" />
+            <element signature="e#7854#8034#0" expanded="false" />
+            <element signature="e#8948#9842#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ztest/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="476" max-vertical-offset="646">
+          <caret line="28" column="63" selection-start-line="28" selection-start-column="59" selection-end-line="28" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ztest/canvasdraw.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="664" max-vertical-offset="1547">
+          <caret line="78" column="8" selection-start-line="78" selection-start-column="8" selection-end-line="78" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="418" max-vertical-offset="1292">
+          <caret line="67" column="29" selection-start-line="67" selection-start-column="29" selection-end-line="67" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2635">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!block;n#CanvasFloodFiller#0" expanded="false" />
+            <element signature="e#629#854#0" expanded="false" />
+            <element signature="e#949#1490#0" expanded="false" />
+            <element signature="e#1587#1940#0" expanded="false" />
+            <element signature="e#2013#4183#0" expanded="false" />
+            <element signature="e#4269#4851#0" expanded="false" />
+            <element signature="e#5420#5488#0" expanded="false" />
+            <element signature="e#5525#5552#0" expanded="false" />
+            <element signature="e#7854#8034#0" expanded="false" />
+            <element signature="e#8948#9842#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ztest/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="476" max-vertical-offset="646">
+          <caret line="28" column="63" selection-start-line="28" selection-start-column="59" selection-end-line="28" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ztest/canvasdraw.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="664" max-vertical-offset="1547">
+          <caret line="78" column="8" selection-start-line="78" selection-start-column="8" selection-end-line="78" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="401" max-vertical-offset="1275">
+          <caret line="38" column="53" selection-start-line="38" selection-start-column="45" selection-end-line="38" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2193">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!block;n#CanvasFloodFiller#0" expanded="false" />
+            <element signature="e#629#854#0" expanded="false" />
+            <element signature="e#949#1490#0" expanded="false" />
+            <element signature="e#1587#1940#0" expanded="false" />
+            <element signature="e#2013#4183#0" expanded="false" />
+            <element signature="e#4269#4851#0" expanded="false" />
+            <element signature="e#5420#5488#0" expanded="false" />
+            <element signature="e#5525#5552#0" expanded="false" />
+            <element signature="e#7854#8034#0" expanded="false" />
+            <element signature="e#8948#9842#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ztest/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="459" max-vertical-offset="646">
+          <caret line="27" column="63" selection-start-line="27" selection-start-column="59" selection-end-line="27" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ztest/canvasdraw.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="690" max-vertical-offset="1547">
+          <caret line="62" column="18" selection-start-line="62" selection-start-column="18" selection-end-line="62" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1258">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1820" max-vertical-offset="2703">
+          <caret line="317" column="9" selection-start-line="317" selection-start-column="9" selection-end-line="317" selection-end-column="9" />
+          <folding>
+            <element signature="n#!!block;n#CanvasFloodFiller#0" expanded="false" />
+            <element signature="e#629#854#0" expanded="false" />
+            <element signature="e#949#1490#0" expanded="false" />
+            <element signature="e#1587#1940#0" expanded="false" />
+            <element signature="e#2013#4183#0" expanded="false" />
+            <element signature="e#4269#4851#0" expanded="false" />
+            <element signature="e#5420#5488#0" expanded="false" />
+            <element signature="e#5525#5552#0" expanded="false" />
+            <element signature="e#7854#8034#0" expanded="false" />
+            <element signature="e#8948#9842#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="476" max-vertical-offset="629">
           <caret line="28" column="61" selection-start-line="28" selection-start-column="61" selection-end-line="28" selection-end-column="61" />
           <folding />
@@ -279,7 +496,10 @@
             <element signature="e#1587#1940#0" expanded="false" />
             <element signature="e#2013#4183#0" expanded="false" />
             <element signature="e#4269#4851#0" expanded="false" />
-            <element signature="e#7365#8259#0" expanded="false" />
+            <element signature="e#5420#5488#0" expanded="false" />
+            <element signature="e#5525#5552#0" expanded="false" />
+            <element signature="e#7854#8034#0" expanded="false" />
+            <element signature="e#8948#9842#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -303,7 +523,10 @@
             <element signature="e#1587#1940#0" expanded="false" />
             <element signature="e#2013#4183#0" expanded="false" />
             <element signature="e#4269#4851#0" expanded="false" />
-            <element signature="e#7365#8259#0" expanded="false" />
+            <element signature="e#5420#5488#0" expanded="false" />
+            <element signature="e#5525#5552#0" expanded="false" />
+            <element signature="e#7854#8034#0" expanded="false" />
+            <element signature="e#8948#9842#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -327,15 +550,47 @@
             <element signature="e#1587#1940#0" expanded="false" />
             <element signature="e#2013#4183#0" expanded="false" />
             <element signature="e#4269#4851#0" expanded="false" />
-            <element signature="e#7365#8259#0" expanded="false" />
+            <element signature="e#5420#5488#0" expanded="false" />
+            <element signature="e#5525#5552#0" expanded="false" />
+            <element signature="e#7854#8034#0" expanded="false" />
+            <element signature="e#8948#9842#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ztest/myimg.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.769231" vertical-offset="418" max-vertical-offset="1292">
+          <caret line="38" column="34" selection-start-line="38" selection-start-column="28" selection-end-line="38" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ztest/canvasdraw.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7497169" vertical-offset="664" max-vertical-offset="1547">
+          <caret line="78" column="8" selection-start-line="78" selection-start-column="8" selection-end-line="78" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ztest/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5554259" vertical-offset="0" max-vertical-offset="857">
+          <caret line="28" column="63" selection-start-line="28" selection-start-column="59" selection-end-line="28" selection-end-column="63" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1820" max-vertical-offset="2703">
-          <caret line="317" column="9" selection-start-line="317" selection-start-column="9" selection-end-line="317" selection-end-column="9" />
+        <state vertical-scroll-proportion="0.6342016" vertical-offset="800" max-vertical-offset="3927">
+          <caret line="242" column="41" selection-start-line="242" selection-start-column="41" selection-end-line="242" selection-end-column="41" />
           <folding>
             <element signature="n#!!block;n#CanvasFloodFiller#0" expanded="false" />
             <element signature="e#629#854#0" expanded="false" />
@@ -343,16 +598,11 @@
             <element signature="e#1587#1940#0" expanded="false" />
             <element signature="e#2013#4183#0" expanded="false" />
             <element signature="e#4269#4851#0" expanded="false" />
-            <element signature="e#7365#8259#0" expanded="false" />
+            <element signature="e#5420#5488#0" expanded="false" />
+            <element signature="e#5525#5552#0" expanded="false" />
+            <element signature="e#7854#8034#0" expanded="false" />
+            <element signature="e#8948#9842#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.46441072" vertical-offset="78" max-vertical-offset="1258">
-          <caret line="28" column="38" selection-start-line="28" selection-start-column="38" selection-end-line="28" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>
