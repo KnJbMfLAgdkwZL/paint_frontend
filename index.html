@@ -4,68 +4,9 @@
 		<meta charset='UTF-8'/>
 		<title>My Paint</title>
 		<script src='http://code.jquery.com/jquery-2.1.4.js'></script>
-		<script src='index.js'></script>
-		<style>
-			*
-			{
-				margin: 0px;
-				padding: 0px;
-			}
-			#MyCanvas
-			{
-				background: lightgray;
-				border: 1px solid black;
-			}
-			.paintitems
-			{
-				border: 1px solid lightblue;
-				width: 40px;
-				height: 40px;
-				display: inline-block;
-				cursor: pointer;
-			}
-			#pen
-			{
-				border: 1px solid red;
-			}
-			.paintitems > img
-			{
-				width: 40px;
-				height: 40px;
-			}
-		</style>
+		<script src='./index.js'></script>
 	</head>
 	<body>
-		<canvas width='800' height='600' id='MyCanvas'></canvas>
-		<div>
-            <span class="paintitems" id="pen">
-                <img src="./img/pen.png"/>
-            </span>
-            <span class="paintitems" id="bucket">
-                <img src="./img/bucket.png"/>
-            </span>
-			<input type="color" id="color" name="color" value="#000000"/>
-			<select id="size">
-				<option value="1">1</option>
-				<option value="2">2</option>
-				<option value="4" selected>4</option>
-				<option value="6">6</option>
-				<option value="8">8</option>
-				<option value="10">10</option>
-				<option value="12">12</option>
-				<option value="14">14</option>
-				<option value="16">16</option>
-				<option value="18">18</option>
-				<option value="20">20</option>
-				<option value="22">22</option>
-				<option value="24">24</option>
-				<option value="26">26</option>
-				<option value="28">28</option>
-				<option value="30">30</option>
-			</select>
-			<button id="clear">Clear All</button>
-			<button id="Undo">Undo</button>
-			<button id="Redo">Redo</button>
-		</div>
+		<button id='createroom'>Create new room</button>
 	</body>
 </html>

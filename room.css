@@ -1,0 +1,27 @@
+*
+{
+	margin: 0px;
+	padding: 0px;
+}
+#MyCanvas
+{
+	background: lightgray;
+	border: 1px solid black;
+}
+.paintitems
+{
+	border: 1px solid lightblue;
+	width: 40px;
+	height: 40px;
+	display: inline-block;
+	cursor: pointer;
+}
+#pen
+{
+	border: 1px solid red;
+}
+.paintitems > img
+{
+	width: 40px;
+	height: 40px;
+}
