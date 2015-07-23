@@ -198,11 +198,11 @@ function Paint()
 					this.MouseClick(x, y);
 					if (this.prev_X != -1 && this.prev_Y != -1)
 					{
+						this.ContexMyCanvas.lineWidth = this.CurSize;
+						this.ContexMyCanvas.strokeStyle = this.CurColor;
 						this.ContexMyCanvas.beginPath();
 						this.ContexMyCanvas.moveTo(this.prev_X, this.prev_Y);
 						this.ContexMyCanvas.lineTo(x, y);
-						this.ContexMyCanvas.lineWidth = this.CurSize;
-						this.ContexMyCanvas.strokeStyle = this.CurColor;
 						this.ContexMyCanvas.stroke();
 					}
 					break;
@@ -220,12 +220,22 @@ function Paint()
 		switch (this.CurItem)
 		{
 			case 'pen':
-				this.ContexMyCanvas.beginPath();
+				//
 				this.ContexMyCanvas.lineWidth = this.CurSize;
+				this.ContexMyCanvas.strokeStyle = this.CurColor;
+				this.ContexMyCanvas.fillStyle = this.CurColor;
+				//
+				this.ContexMyCanvas.beginPath();
 				this.ContexMyCanvas.arc(x, y, 0.1, 0, 2 * Math.PI);
 				this.ContexMyCanvas.fill();
-				this.ContexMyCanvas.strokeStyle = this.CurColor;
 				this.ContexMyCanvas.stroke();
+				//
+				this.ContexMyCanvas.lineWidth = 0.1;
+				this.ContexMyCanvas.beginPath();
+				this.ContexMyCanvas.arc(x, y, this.CurSize / 2, 0, 2 * Math.PI, false);
+				this.ContexMyCanvas.fill();
+				this.ContexMyCanvas.stroke();
+				//
 				break;
 			case 'bucket':
 				var data = this.PushArray[this.Step];
@@ -322,11 +332,176 @@ $(document).ready(function ()
 		console.log(str);
 	}
 });
-function GoPaint()
+function ClientSocketLogic()
 {
+	this.conectionopen = false;
+	this.id = '';
+	this.connection = null;
+	this.stilaliveinterval = null;
+	this.getUrlVar = function (key)
+	{
+		var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+		for (var i = 0; i < hashes.length; i++)
+		{
+			var hash = hashes[i].split('=');
+			if (hash[0] == key)
+			{
+				return hash[1];
+			}
+		}
+	}
+	this.RedirectTo = function (url)
+	{
+		document.location.href = url;
+	}
+	this.start = function ()
+	{
+		this.id = this.getUrlVar('id');
+		if (!this.id)
+		{
+			this.RedirectTo('/');
+		}
+		if (!('WebSocket' in window))
+		{
+			console.log('WebSockets не поддерживается.');
+			RedirectTo('/');
+		}
+		console.log('WebSocket поддерживается.');
+		this.connection = new WebSocket('ws://192.168.0.100:6789');
+		this.connection.onopen = this.onopen;
+		this.connection.onmessage = this.onmessage;
+		this.connection.onclose = this.onclose;
+		this.connection.onerror = this.onerror;
+		this.connection.client = this;
+	}
+	this.SendMesage = function (message)
+	{
+		if (this.conectionopen == true)
+		{
+			message.id = this.id;
+			message = JSON.stringify(message);
+			//console.log("Sending mesage");
+			//console.log(message);
+			this.connection.send(message);
+		}
+	}
+	this.stilalive = function ()
+	{
+		var client = this;
+		this.stilaliveinterval = setInterval(function ()
+		{
+			var message =
+			{
+				command: 'stilalive'
+			}
+			client.SendMesage(message);
+		}, 500);
+	}
+	this.ChangeNikName = function (name)
+	{
+		var message =
+		{
+			command: 'changenick',
+			name: name
+		}
+		this.SendMesage(message);
+	}
+	this.stilalivestop = function ()
+	{
+		if (this.stilaliveinterval)
+		{
+			clearInterval(this.stilaliveinterval);
+			this.stilaliveinterval = null;
+		}
+	}
+	this.onmessage = function (e)
+	{
+		try
+		{
+			//console.log("Resiving mesage");
+			var message = e.data;
+			//console.log(message);
+			if (message.length > 10)
+			{
+				message = JSON.parse(message);
+				//console.log(message);
+				var command = message[0];
+				switch (command)
+				{
+					case 'UpdateUsers':
+					{
+						var users = message[1];
+						var str = "";
+						for (var k in users)
+						{
+							str += "<li>" + users[k] + "</li>"
+						}
+						$('#UsersList').html(str);
+					}
+						break;
+					case 'mousepaintclick':
+					{
+						var x = message[1];
+						var y = message[2];
+						var item = message[3];
+						var color = message[4];
+						var size = message[5];
+					}
+						break;
+				}
+			}
+			//console.log(e.data);
+			//console.log(message);
+		}
+		catch (error)
+		{
+			var str = error.name + '\n';
+			str += error.message + '\n';
+			str += error.stack;
+			console.log(str);
+		}
+	}
+	this.onopen = function ()
+	{
+		console.log('Connection open!');
+		this.client.conectionopen = true;
+		this.client.connection.apply_mask = false;
+		var message =
+		{
+			command: 'room',
+			userinfo: navigator.userAgent
+		}
+		this.client.SendMesage(message);
+		this.client.stilalive();
+	}
+	this.onclose = function ()
+	{
+		console.log('Connection closed');
+		this.client.conectionopen = false;
+		this.client.stilalivestop();
+	}
+	this.onerror = function (error)
+	{
+		console.log('Socket Error');
+		this.client.conectionopen = false;
+		this.client.stilalivestop();
+	}
+}
+function Main()
+{
+	var client = new ClientSocketLogic();
+	client.start();
+	$('#nicknamechange').click(function ()
+	{
+		var name = $('#nicknamevalue').val();
+		if (name.length > 0)
+		{
+			client.ChangeNikName(name);
+		}
+	});
 	var MyCanvas = document.getElementById("MyCanvas");
 	var ContexMyCanvas = MyCanvas.getContext("2d");
-	var paint = new Paint();
+	paint = new Paint();
 	paint.SetContexMyCanvas(ContexMyCanvas);
 	$('.paintitems').click(function ()
 	{
@@ -374,100 +549,4 @@ function GoPaint()
 		var y = e.pageY;
 		paint.MousMove(x, y);
 	});
-}
-//
-function ClientSocketLogic()
-{
-	this.id = '';
-	this.connection = null;
-	this.getUrlVar = function (key)
-	{
-		var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
-		for (var i = 0; i < hashes.length; i++)
-		{
-			var hash = hashes[i].split('=');
-			if (hash[0] == key)
-			{
-				return hash[1];
-			}
-		}
-	}
-	this.RedirectTo = function (url)
-	{
-		document.location.href = url;
-	}
-	this.start = function ()
-	{
-		this.id = this.getUrlVar('id');
-		if (!this.id)
-		{
-			this.RedirectTo('/');
-		}
-		if (!('WebSocket' in window))
-		{
-			console.log('WebSockets не поддерживается.');
-			RedirectTo('/');
-		}
-		console.log('WebSocket поддерживается.');
-		this.connection = new WebSocket('ws://192.168.0.100:6789');
-		this.connection.onopen = this.onopen;
-		this.connection.onmessage = this.onmessage;
-		this.connection.onclose = this.onclose;
-		this.connection.onerror = this.onerror;
-		this.connection.client = this;
-	}
-	this.SendMesage = function (message)
-	{
-		/*var str = JSON.stringify(event);//преобразование в строку
-		 event = JSON.parse(str);//Обратное преобразование.*/
-		message = JSON.stringify(message);
-		console.log("Sending mesage");
-		console.log(message);
-		this.connection.send(message);
-	}
-	this.stilalive = function ()
-	{
-		var client = this;
-		setInterval(function ()
-		{
-			var message =
-			{
-				command: 'stilalive',
-				id: client.id
-			}
-			client.SendMesage(message);
-		}, 5000);
-	}
-	this.onmessage = function (e)
-	{
-		console.log("Resiving mesage");
-		var server_message = e.data;
-		console.log(server_message);
-	}
-	this.onopen = function ()
-	{
-		console.log('Connection open!');
-		this.client.connection.apply_mask = false;
-		var message =
-		{
-			command: 'room',
-			id: this.client.id,
-			userinfo: navigator.userAgent
-		}
-		this.client.SendMesage(message);
-		this.client.stilalive();
-	}
-	this.onclose = function ()
-	{
-		console.log('Connection closed');
-	}
-	this.onerror = function (error)
-	{
-		console.log('Socket Error');
-	}
-}
-function Main()
-{
-	var client = new ClientSocketLogic();
-	client.start();
 }
