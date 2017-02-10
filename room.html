@@ -3,12 +3,17 @@
 	<head>
 		<meta charset='UTF-8'/>
 		<title>My Paint</title>
-		<script src='http://code.jquery.com/jquery-2.1.4.js'></script>
-		<script src='./room.js'></script>
-		<link rel="stylesheet" href='./room.css'>
+		<link rel="stylesheet" href='./css/room.css'/>
+		<script src='./jQuery/jquery-2.1.4.js'></script>
+		<script src='./jQuery/jcanvas.js'></script>
+		<script src='./JavaScript/CanvasFloodFiller.js'></script>
+		<script src='./JavaScript/Paint.js'></script>
+		<script src='./JavaScript/ClientSocketLogic.js'></script>
+		<script src='./JavaScript/room_main.js'></script>
 	</head>
 	<body>
 		<canvas width='800' height='600' id='MyCanvas'></canvas>
+		<canvas width='800' height='600' id='MyCanvasShowArea'></canvas>
 		<div>
             <span class="paintitems" id="pen">
                 <img src="./img/pen.png"/>
@@ -18,10 +23,11 @@
             </span>
 			<input type="color" id="color" name="color" value="#000000"/>
 			<select id="size">
-				<option value="2">2</option>
-				<option value="4" selected>4</option>
-				<option value="6">6</option>
-				<option value="8">8</option>
+				<option value="1">01</option>
+				<option value="2">02</option>
+				<option value="4" selected>04</option>
+				<option value="6">06</option>
+				<option value="8">08</option>
 				<option value="10">10</option>
 				<option value="12">12</option>
 				<option value="14">14</option>
@@ -35,25 +41,11 @@
 				<option value="30">30</option>
 			</select>
 			<button id="clear">Clear All</button>
-			<button id="Undo">Undo</button>
-			<button id="Redo">Redo</button>
-
-
 			<div id="UsersInfo">
-				<ul id="UsersList" type="none">
-					<!--
-					<li>User_1</li>
-					<li>User_2</li>
-					<li>User_3</li>
-					<li>User_4</li>
-					<li>User_5</li>
-					<li>User_6</li>
-					-->
-				</ul>
+				<ul id="UsersList" type="none"></ul>
 				<input type="text" id="nicknamevalue" value="" placeholder="You nickname"/>
 				<input type="button" id="nicknamechange" value="Change"/>
 			</div>
-
 		</div>
 	</body>
 </html>
