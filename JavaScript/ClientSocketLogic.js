@@ -3,10 +3,6 @@ function ClientSocketLogic()
 	this.conectionopen = false;
 	this.id = '';
 	this.connection = null;
-	this.stilaliveinterval = null;
-	//
-	this.ports = [6780, 6781, 6782, 6783, 6784, 6785, 6786, 6787, 6788, 6789];
-	//
 	this.getUrlVar = function (key)
 	{
 		var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
@@ -43,21 +39,7 @@ function ClientSocketLogic()
 		console.log('WebSocket поддерживается.');
 		if (this.conectionopen == false)
 		{
-			/*var tmpclient = this;
-			 setInterval(function ()
-			 {
-			 if (tmpclient.conectionopen == false)
-			 {
-			 if (tmpclient.connection)
-			 {
-			 tmpclient.connection.close();
-			 }
-			 delete tmpclient.connection;
-			 tmpclient.start();
-			 }
-			 }, 10000);*/
-			var curport = Math.floor(Math.random() * (9 - 0 + 1)) + 0;
-			this.connection = new WebSocket('ws://' + url + ':' + this.ports[curport]);
+			this.connection = new WebSocket('ws://' + url + ':6780');
 			this.connection.onopen = this.onopen;
 			this.connection.onmessage = this.onmessage;
 			this.connection.onclose = this.onclose;
@@ -89,27 +71,10 @@ function ClientSocketLogic()
 		var message = ['clca'];
 		this.SendMesage(message);
 	}
-	this.stilalive = function ()
-	{
-		var client = this;
-		this.stilaliveinterval = setInterval(function ()
-		{
-			var message = ['live'];
-			client.SendMesage(message);
-		}, 1000);
-	}
 	this.ChangeNikName = function (name)
 	{
 		var message = ['nick', name];
 		this.SendMesage(message);
-	}
-	this.stilalivestop = function ()
-	{
-		if (this.stilaliveinterval)
-		{
-			clearInterval(this.stilaliveinterval);
-			this.stilaliveinterval = null;
-		}
 	}
 	this.onmessage = function (e)
 	{
@@ -177,18 +142,17 @@ function ClientSocketLogic()
 		this.client.connection.apply_mask = false;
 		var message = ['conn', navigator.userAgent];
 		this.client.SendMesage(message);
-		this.client.stilalive();
 	}
 	this.onclose = function ()
 	{
 		console.log('Connection closed');
 		this.client.conectionopen = false;
-		this.client.stilalivestop();
+		location.reload();
 	}
 	this.onerror = function (error)
 	{
 		console.log('Socket Error');
 		this.client.conectionopen = false;
-		this.client.stilalivestop();
+		location.reload();
 	}
 }
