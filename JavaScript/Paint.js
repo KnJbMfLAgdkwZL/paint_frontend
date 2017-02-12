@@ -48,8 +48,8 @@ function Paint()
 		}
 		if (this.MousDown == true)
 		{
-			//this.MouseClick(x, y);
 			client.MouseClick(x, y, this.CurColor, this.CurSize, this.CurItem);
+			this.FromServerClick(x, y, this.CurColor, this.CurSize, this.CurItem);
 		}
 		else if (this.MousDown == false)
 		{
@@ -65,16 +65,8 @@ function Paint()
 				case 'pen':
 					if (this.prev_X != -1 && this.prev_Y != -1)
 					{
-						/*$('#MyCanvas').drawLine({
-						 strokeStyle: this.CurColor,
-						 strokeWidth: this.CurSize,
-						 rounded: true,
-						 x1: this.prev_X,
-						 y1: this.prev_Y,
-						 x2: x,
-						 y2: y
-						 });*/
 						client.DrawLine(this.prev_X, this.prev_Y, x, y, this.CurColor, this.CurSize);
+						this.FromDrawLine(this.prev_X, this.prev_Y, x, y, this.CurColor, this.CurSize);
 					}
 					break;
 			}
@@ -173,6 +165,7 @@ function Paint()
 	this.ClearAll = function ()
 	{
 		client.ClearCanvas();
+		this.ClearCanvas();
 	}
 	this.ClearCanvas = function ()
 	{

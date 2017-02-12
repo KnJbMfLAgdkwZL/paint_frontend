@@ -39,7 +39,18 @@ function ClientSocketLogic()
 		console.log('WebSocket поддерживается.');
 		if (this.conectionopen == false)
 		{
-			this.connection = new WebSocket('ws://' + url + ':6780');
+			try
+			{
+				this.connection = new WebSocket('ws://' + url + ':6780');
+			}
+			catch (error)
+			{
+				var str = error.name + '\n';
+				str += error.message + '\n';
+				str += error.stack;
+				console.log(str);
+				location.reload();
+			}
 			this.connection.onopen = this.onopen;
 			this.connection.onmessage = this.onmessage;
 			this.connection.onclose = this.onclose;
@@ -58,22 +69,22 @@ function ClientSocketLogic()
 	}
 	this.MouseClick = function (x, y, color, size, item)
 	{
-		var message = ['mclk', x, y, color, size, item];
+		var message = ['m', x, y, color, size, item];
 		this.SendMesage(message);
 	}
 	this.DrawLine = function (x1, y1, x2, y2, color, size)
 	{
-		var message = ['dlin', x1, y1, x2, y2, color, size];
+		var message = ['d', x1, y1, x2, y2, color, size];
 		this.SendMesage(message);
 	}
 	this.ClearCanvas = function ()
 	{
-		var message = ['clca'];
+		var message = ['l'];
 		this.SendMesage(message);
 	}
 	this.ChangeNikName = function (name)
 	{
-		var message = ['nick', name];
+		var message = ['n', name];
 		this.SendMesage(message);
 	}
 	this.onmessage = function (e)
@@ -87,7 +98,7 @@ function ClientSocketLogic()
 				var com = message[0];
 				switch (com)
 				{
-					case 'upus':
+					case 'u':
 					{
 						var users = message[1];
 						var str = "";
@@ -98,7 +109,7 @@ function ClientSocketLogic()
 						$('#UsersList').html(str);
 					}
 						break;
-					case 'mclk':
+					case 'm':
 					{
 						var x = message[1];
 						var y = message[2];
@@ -108,7 +119,7 @@ function ClientSocketLogic()
 						paint.FromServerClick(x, y, color, size, item);
 					}
 						break;
-					case 'dlin':
+					case 'd':
 					{
 						var x1 = message[1];
 						var y1 = message[2];
@@ -119,7 +130,7 @@ function ClientSocketLogic()
 						paint.FromDrawLine(x1, y1, x2, y2, color, size);
 					}
 						break;
-					case 'clca':
+					case 'l':
 					{
 						paint.ClearCanvas();
 					}
@@ -137,10 +148,11 @@ function ClientSocketLogic()
 	}
 	this.onopen = function ()
 	{
+		$('#connecting').css('display', 'none');
 		console.log('Connection open!');
 		this.client.conectionopen = true;
 		this.client.connection.apply_mask = false;
-		var message = ['conn', navigator.userAgent];
+		var message = ['c', navigator.userAgent];
 		this.client.SendMesage(message);
 	}
 	this.onclose = function ()
